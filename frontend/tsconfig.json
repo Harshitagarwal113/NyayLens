@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@nyaylens/shared": ["../shared/src"]
     }
   },
   "include": [
