@@ -1,0 +1,22 @@
+{
+  "name": "nyaylens",
+  "version": "1.0.0",
+  "description": "AI-powered legal document assistant",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @nyaylens/frontend\" \"npm run dev -w @nyaylens/backend\" \"npm run dev -w @nyaylens/shared\"",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.0.3",
+    "typescript": "^5.0.0"
+  }
+}
