@@ -74,7 +74,7 @@ export function AiPanel({ documentId, analysis, onPageSelect }: AiPanelProps) {
                 <Users className="h-4 w-4" /> Parties
               </h3>
               <div className="grid gap-3">
-                {analysis.parties.map((party, idx) => (
+                {analysis.parties.map((party: any, idx: number) => (
                   <div key={idx} className="flex flex-col p-3 border rounded-lg bg-slate-50">
                     <div className="flex justify-between items-start gap-2">
                       <span className="font-semibold text-slate-900">{party.name}</span>
@@ -93,7 +93,7 @@ export function AiPanel({ documentId, analysis, onPageSelect }: AiPanelProps) {
                 <Calendar className="h-4 w-4" /> Important Dates
               </h3>
               <div className="grid gap-2">
-                {analysis.important_dates.map((item, idx) => (
+                {analysis.important_dates.map((item: any, idx: number) => (
                   <div key={idx} className="flex justify-between items-center p-3 border rounded-lg hover:bg-slate-50 transition-colors">
                     <div className="flex flex-col">
                       <span className="font-medium text-slate-900">{item.date}</span>
@@ -112,7 +112,7 @@ export function AiPanel({ documentId, analysis, onPageSelect }: AiPanelProps) {
                 <DollarSign className="h-4 w-4" /> Important Amounts
               </h3>
               <div className="grid gap-2">
-                {analysis.important_amounts.map((item, idx) => (
+                {analysis.important_amounts.map((item: any, idx: number) => (
                   <div key={idx} className="flex justify-between items-center p-3 border rounded-lg hover:bg-slate-50 transition-colors">
                     <div className="flex flex-col">
                       <span className="font-medium text-slate-900">{item.amount}</span>
@@ -129,7 +129,7 @@ export function AiPanel({ documentId, analysis, onPageSelect }: AiPanelProps) {
         {/* CLAUSES TAB */}
         <TabsContent value="clauses" className="flex-1 overflow-y-auto p-4 m-0">
           <div className="space-y-4">
-            {analysis.important_clauses?.length > 0 ? analysis.important_clauses.map((clause, idx) => (
+            {analysis.important_clauses?.length > 0 ? analysis.important_clauses.map((clause: any, idx: number) => (
               <Card key={idx} className="shadow-sm">
                 <CardHeader className="pb-2 flex flex-row items-start justify-between space-y-0">
                   <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">
@@ -151,7 +151,7 @@ export function AiPanel({ documentId, analysis, onPageSelect }: AiPanelProps) {
         {/* ATTENTION TAB */}
         <TabsContent value="attention" className="flex-1 overflow-y-auto p-4 m-0">
           <div className="space-y-4">
-            {analysis.attention_areas?.length > 0 ? analysis.attention_areas.map((area, idx) => {
+            {analysis.attention_areas?.length > 0 ? analysis.attention_areas.map((area: any, idx: number) => {
               const isHighRisk = area.severity === "high" || area.risk_level === "high";
               return (
                 <Card key={idx} className={`shadow-sm border-l-4 ${isHighRisk ? 'border-l-red-500' : 'border-l-yellow-500'}`}>
