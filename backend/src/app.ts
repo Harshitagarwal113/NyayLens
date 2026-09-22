@@ -25,7 +25,7 @@ app.use('/api/', limiter);
 // 3. Middlewares
 app.use(requestLogger);
 app.use(cors({
-  origin: [env.FRONTEND_URL, 'https://nyay-lens-six.vercel.app'],
+  origin: env.FRONTEND_URL,
   credentials: true,
 }));
 
