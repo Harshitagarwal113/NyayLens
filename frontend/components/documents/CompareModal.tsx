@@ -150,7 +150,7 @@ export function CompareModal({ documents }: CompareModalProps) {
                   </h3>
                   {comparison.modified_clauses?.length > 0 ? (
                     <div className="space-y-4">
-                      {comparison.modified_clauses.map((item, idx) => (
+                      {comparison.modified_clauses.map((item: any, idx: number) => (
                         <div key={idx} className="bg-white border rounded-lg overflow-hidden shadow-sm">
                           <div className="bg-slate-50 px-4 py-2 border-b flex justify-between items-center">
                             <span className="font-semibold text-slate-900">{item.clause_name}</span>
@@ -182,7 +182,7 @@ export function CompareModal({ documents }: CompareModalProps) {
                   </h3>
                   {comparison.added_clauses?.length > 0 ? (
                     <div className="space-y-3">
-                      {comparison.added_clauses.map((item, idx) => (
+                      {comparison.added_clauses.map((item: any, idx: number) => (
                         <div key={idx} className="bg-emerald-50/50 border border-emerald-100 p-4 rounded-lg">
                           <span className="font-semibold text-emerald-900 block mb-1">{item.clause_name}</span>
                           <p className="text-sm text-emerald-800">{item.summary}</p>
@@ -202,7 +202,7 @@ export function CompareModal({ documents }: CompareModalProps) {
                   </h3>
                   {comparison.removed_clauses?.length > 0 ? (
                     <div className="space-y-3">
-                      {comparison.removed_clauses.map((item, idx) => (
+                      {comparison.removed_clauses.map((item: any, idx: number) => (
                         <div key={idx} className="bg-red-50/50 border border-red-100 p-4 rounded-lg">
                           <span className="font-semibold text-red-900 block mb-1 line-through">{item.clause_name}</span>
                           <p className="text-sm text-red-800 opacity-80">{item.summary}</p>
@@ -222,7 +222,7 @@ export function CompareModal({ documents }: CompareModalProps) {
                   </h3>
                   {comparison.important_value_changes?.length > 0 ? (
                     <div className="space-y-3">
-                      {comparison.important_value_changes.map((item, idx) => (
+                      {comparison.important_value_changes.map((item: any, idx: number) => (
                         <div key={idx} className="bg-white border rounded-lg p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                           <div>
                             <span className="font-semibold text-slate-900 block">{item.item}</span>
