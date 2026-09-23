@@ -48,7 +48,7 @@ export class GeminiService {
   static async generateText(prompt: string, systemInstruction?: string, timeoutMs = 30000): Promise<string> {
     try {
       const model = genAI.getGenerativeModel({
-        model: 'gemini-3.5-flash-lite',
+        model: 'gemini-3.5-flash',
         systemInstruction,
       });
 
@@ -78,7 +78,7 @@ export class GeminiService {
   static async generateJson(prompt: string, schema: Schema, systemInstruction?: string, timeoutMs = 30000): Promise<string> {
     try {
       const model = genAI.getGenerativeModel({
-        model: 'gemini-3.5-flash-lite',
+        model: 'gemini-3.5-flash',
         systemInstruction,
       });
 
@@ -145,7 +145,7 @@ export class GeminiService {
       });
 
       // 3. Generate content using multimodal capabilities
-      const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash-lite' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
       
       const prompt = `This is a scanned PDF document. Transcribe the full text of this document page by page. Prepend the text of each page exactly with '--- PAGE X ---' where X is the page number. Make sure the transcription is accurate and includes all text. If a page is blank, just write the marker and nothing else.`;
 
