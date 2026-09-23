@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, Schema } from '@google/generative-ai';
+import { GoogleGenerativeAI, Schema, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
 import { GoogleAIFileManager } from '@google/generative-ai/server';
 import { env } from '../config/env';
 import { AppError } from '../middlewares/error.middleware';
@@ -20,6 +20,25 @@ export class GeminiError extends Error implements AppError {
 // Initialize the Google Generative AI client
 const genAI = new GoogleGenerativeAI(env.GEMINI_API_KEY);
 const fileManager = new GoogleAIFileManager(env.GEMINI_API_KEY);
+
+const defaultSafetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+];
 
 export class GeminiService {
   /**
@@ -50,6 +69,7 @@ export class GeminiService {
       const model = genAI.getGenerativeModel({
         model: 'gemini-3.5-flash',
         systemInstruction,
+        safetySettings: defaultSafetySettings,
       });
 
       const request = model.generateContent({
@@ -80,6 +100,7 @@ export class GeminiService {
       const model = genAI.getGenerativeModel({
         model: 'gemini-3.5-flash',
         systemInstruction,
+        safetySettings: defaultSafetySettings,
       });
 
       const request = model.generateContent({
@@ -145,7 +166,10 @@ export class GeminiService {
       });
 
       // 3. Generate content using multimodal capabilities
-      const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
+      const model = genAI.getGenerativeModel({ 
+        model: 'gemini-3.5-flash',
+        safetySettings: defaultSafetySettings
+      });
       
       const prompt = `This is a scanned PDF document. Transcribe the full text of this document page by page. Prepend the text of each page exactly with '--- PAGE X ---' where X is the page number. Make sure the transcription is accurate and includes all text. If a page is blank, just write the marker and nothing else.`;
 
