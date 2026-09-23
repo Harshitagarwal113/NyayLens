@@ -25,6 +25,20 @@
 
 ---
 
+## 🎯 Problem Statement Alignment
+
+NyayLens is a GenAI-powered solution explicitly designed to make legal information and basic legal assistance more accessible. It empowers users to understand, compare, and navigate legal documents and information through the following key use cases:
+
+- **Simplifying complex legal documents**: Translates dense legal jargon into plain-language summaries so anyone can understand what they are signing.
+- **Comparing contracts, agreements, or policies**: Our side-by-side comparison feature automatically detects modifications and highlights inconsistencies between versions of a contract.
+- **Highlighting important clauses, obligations, risks, or inconsistencies**: The "Attention Areas" scanner specifically flags risky clauses, financial obligations, and unusual terms that require review.
+- **Answering questions based on provided legal documents**: The interactive RAG-based chat allows users to ask open-ended questions about their uploaded documents and receive accurate answers with citations.
+- **Helping users understand their options and potential next steps**: The AI generates contextual advice on what actions a user should consider based on the document's contents.
+- **Generating summaries, checklists, or other actionable outputs**: Automatically creates compliance checklists and obligation trackers from raw contracts.
+- **Helping users prepare information or questions for a legal professional**: NyayLens generates a curated list of "Questions to ask your lawyer" to ensure users are fully prepared for professional legal consultations.
+
+---
+
 ## 🏗️ High-Level Architecture
 
 NyayLens is built on a modern, highly scalable full-stack architecture utilizing vector embeddings for semantic search.

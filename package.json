@@ -12,7 +12,8 @@
     "dev": "concurrently \"npm run dev -w @nyaylens/frontend\" \"npm run dev -w @nyaylens/backend\" \"npm run dev -w @nyaylens/shared\"",
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "test": "npm run test --workspaces --if-present"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
