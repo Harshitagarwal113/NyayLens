@@ -32,3 +32,10 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .env
+
+# docs
+docs/
+
+# scratch scripts
+check-*.js
+backend/check-*.js

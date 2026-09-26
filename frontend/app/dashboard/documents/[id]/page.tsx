@@ -21,17 +21,19 @@ export default function DocumentWorkspacePage() {
   const [analysis, setAnalysis] = useState<DocumentAnalysisData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [analysisError, setAnalysisError] = useState("");
   const [currentPage, setCurrentPage] = useState<number | undefined>(undefined);
   const [isGenerating, setIsGenerating] = useState(false);
 
   const generateAnalysis = async () => {
     setIsGenerating(true);
+    setAnalysisError("");
     try {
       const response = await apiClient.post(`/documents/${id}/analyze`, {});
       setAnalysis(response as DocumentAnalysisData);
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "Failed to generate analysis");
+      setAnalysisError(err.message || "Failed to generate analysis. Please try again.");
     } finally {
       setIsGenerating(false);
     }
@@ -125,12 +127,23 @@ export default function DocumentWorkspacePage() {
               />
             ) : (
               <div className="flex h-full items-center justify-center bg-white">
-                <div className="text-center p-8 flex flex-col items-center">
+                <div className="text-center p-8 flex flex-col items-center max-w-md">
                   <AlertCircle className="h-12 w-12 text-blue-500 mx-auto mb-4 opacity-50" />
                   <h3 className="text-lg font-medium text-slate-900 mb-2">Ready for AI Analysis</h3>
                   <p className="text-sm text-slate-500 max-w-sm mx-auto mb-6">
                     Generate a comprehensive breakdown of this document, including key clauses, risk areas, and a structured summary.
                   </p>
+
+                  {analysisError && (
+                    <Alert variant="destructive" className="mb-4 text-left">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertTitle>Analysis Error</AlertTitle>
+                      <AlertDescription className="text-xs mt-1">
+                        {analysisError}
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
                   <Button onClick={generateAnalysis} disabled={isGenerating}>
                     {isGenerating ? (
                       <>
@@ -138,7 +151,7 @@ export default function DocumentWorkspacePage() {
                         Generating Analysis (This may take a minute)...
                       </>
                     ) : (
-                      "Generate AI Analysis"
+                      analysisError ? "Retry AI Analysis" : "Generate AI Analysis"
                     )}
                   </Button>
                 </div>

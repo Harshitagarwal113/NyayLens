@@ -12,6 +12,7 @@ const envSchema = z.object({
   SUPABASE_URL: z.string().url(),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
   GEMINI_API_KEY: z.string().min(1, "Gemini API Key is required"),
+  GEMINI_MODEL: z.string().optional().default('gemini-2.5-flash'),
 });
 
 // Validate the environment variables

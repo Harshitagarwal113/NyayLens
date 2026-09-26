@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'test';
 process.env.SUPABASE_URL = 'http://localhost:54321';
 process.env.SUPABASE_SERVICE_ROLE_KEY = 'dummy-key';
 process.env.GEMINI_API_KEY = 'dummy-gemini-key';
+process.env.GEMINI_MODEL = 'gemini-2.5-flash';
 process.env.FRONTEND_URL = 'http://localhost:3000';
 jest.mock('../config/supabase', () => {
   const chain = {
